@@ -49,7 +49,7 @@ public class CCImageHelper {
      *
      * @param path              图片路径
      * @param imageHelperConfig 配置信息
-     * @return
+     * @return CCImageHelper
      */
     public static CCImageHelper loadWithCompress(String path, CCImageHelperConfig imageHelperConfig) {
 
@@ -67,7 +67,7 @@ public class CCImageHelper {
      *
      * @param path              图片路径
      * @param imageHelperConfig 配置信息
-     * @return
+     * @return CCImageHelper
      */
     public static CCImageHelper load(String path, CCImageHelperConfig imageHelperConfig) {
 
@@ -83,7 +83,7 @@ public class CCImageHelper {
     /**
      * 质量压缩
      *
-     * @return
+     * @return CCImageHelper
      */
     public CCImageHelper quality() {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -111,7 +111,7 @@ public class CCImageHelper {
     /**
      * 旋转
      *
-     * @return
+     * @return CCImageHelper
      */
     public CCImageHelper rotate() {
 
@@ -150,10 +150,21 @@ public class CCImageHelper {
     }
 
 
+    /**
+     * 水印
+     * @param mark 水印文字
+     * @return CCImageHelper
+     */
     public CCImageHelper watermark(String mark) {
         return watermark(mark, null);
     }
 
+    /**
+     * 水印
+     * @param mark 水印文字
+     * @param drawPaintLisenter 回调
+     * @return CCImageHelper
+     */
     public CCImageHelper watermark(String mark, DrawPaintLisenter drawPaintLisenter) {
 
         int w = mBitmap.getWidth();
@@ -195,8 +206,8 @@ public class CCImageHelper {
     /**
      * 保存到存储空间
      *
-     * @param path
-     * @return
+     * @param path 保存路径
+     * @return 保存路径
      */
     public String saveToStorage(String path) {
         FileOutputStream fos;
@@ -217,7 +228,7 @@ public class CCImageHelper {
     /**
      * 返回Bitmap
      *
-     * @return
+     * @return Bitmap
      */
     public Bitmap build() {
         return mBitmap;
@@ -226,8 +237,8 @@ public class CCImageHelper {
 
     /**
      * 从本地路径读取文件
-     *
-     * @return
+     * @param path 文件路径
+     * @return Bitmap
      */
     protected Bitmap getmBitmapFromPath(String path) {
         Bitmap bitmap = BitmapFactory.decodeFile(path);
@@ -237,8 +248,8 @@ public class CCImageHelper {
 
     /**
      * 从本地路径读取文件并按尺寸压缩
-     *
-     * @return
+     * @param path 文件路径
+     * @return Bitmap
      */
     protected Bitmap getBitmapFromPathWithCompressBySize(String path) {
         BitmapFactory.Options opts = new BitmapFactory.Options();
@@ -270,10 +281,10 @@ public class CCImageHelper {
     }
 
 
+
     /**
      * 回收位图对象
-     *
-     * @param bitmap
+     * @param bitmap bitmap
      */
     protected void recycleBitmap(Bitmap bitmap) {
         if (bitmap != null && !bitmap.isRecycled()) {
@@ -283,7 +294,17 @@ public class CCImageHelper {
         }
     }
 
+    /**
+     * 水印回调
+     */
     public interface DrawPaintLisenter {
+        /**
+         *
+         * @param width 图片宽度
+         * @param height 图片高度
+         * @param paint 画笔
+         * @return 水印在图片中的点位
+         */
         PointF onDrawText(int width, int height, Paint paint);
     }
 

@@ -1,7 +1,6 @@
 package com.ufo.imageutil;
 
 import android.graphics.Color;
-import android.support.annotation.ColorInt;
 
 /**
  * Created by tjpld on 16/6/21.
