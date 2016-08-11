@@ -53,6 +53,7 @@ public class CCImageHelper {
      */
     public static CCImageHelper loadWithCompress(String path, CCImageHelperConfig imageHelperConfig) {
 
+
         mCCImageHelper = new CCImageHelper();
         mCCImageHelper.setPath(path);
         mCCImageHelper.setmCCImageHelperConfig(imageHelperConfig);
