@@ -5,12 +5,12 @@ apply plugin: 'com.github.dcendents.android-maven'
 version = "1.0.0"
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "24"
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 23
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
     }
@@ -38,7 +38,8 @@ install {
         pom {
             project {
                 packaging 'aar'
-                name 'ImageUtil for Android'                                   // #CONFIG# // project title
+                name 'ImageUtil for Android'
+                // #CONFIG# // project title
                 url siteUrl
                 // Set your license
                 licenses {
@@ -49,9 +50,12 @@ install {
                 }
                 developers {
                     developer {
-                        id 'wangnamu'                                           // #CONFIG# // your user id (you can write your nickname)
-                        name 'nan'                                       // #CONFIG# // your user name
-                        email 'wangstin@sina.com'                               // #CONFIG# // your email
+                        id 'wangnamu'
+                        // #CONFIG# // your user id (you can write your nickname)
+                        name 'nan'
+                        // #CONFIG# // your user name
+                        email 'wangstin@sina.com'
+                        // #CONFIG# // your email
                     }
                 }
                 scm {
@@ -92,7 +96,8 @@ bintray {
     configurations = ['archives']
     pkg {
         repo = "maven"
-        name = "imageutil"                                                 // #CONFIG# project name in jcenter
+        name = "imageutil"
+        // #CONFIG# project name in jcenter
         websiteUrl = siteUrl
         vcsUrl = gitUrl
         licenses = ["Apache-2.0"]
